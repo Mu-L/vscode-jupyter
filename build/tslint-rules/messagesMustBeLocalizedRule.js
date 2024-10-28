@@ -18,8 +18,6 @@ const methodNames = [
     'appendLine'
 ];
 // tslint:ignore-next-line:no-suspicious-comments
-// TODO: Ideally we would not ignore any files.
-const ignoredFiles = util.getListOfFiles('unlocalizedFiles.json');
 const ignoredPrefix = path.normalize('src/test');
 const failureMessage =
     'Messages must be localized in the Jupyter Extension (use src/platform/common/utils/localize.ts)';
@@ -38,9 +36,6 @@ class NoStringLiteralsInMessages extends baseRuleWalker.BaseRuleWalker {
         //console.log('');
         //console.log(node.getSourceFile().fileName);
         //console.log(ignoredFiles);
-        if (super.shouldIgnoreCurrentFile(node, ignoredFiles)) {
-            return true;
-        }
         const sourceFile = node.getSourceFile();
         if (sourceFile && sourceFile.fileName) {
             if (sourceFile.fileName.startsWith(ignoredPrefix)) {
