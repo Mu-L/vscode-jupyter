@@ -43,7 +43,11 @@ export class Extensions implements IExtensions {
                     return { extensionId: matchingExt.id, displayName: matchingExt.packageJSON.displayName };
                 }
             }
-            logger.error(`Unable to determine the caller of the extension API for trace stack.`, stack);
+            logger.error(
+                `Unable to determine the caller of the extension API for trace stack.`,
+                stack,
+                JSON.stringify(extensions.all)
+            );
         }
         return { extensionId: unknownExtensionId, displayName: DataScience.unknownPackage };
     }
